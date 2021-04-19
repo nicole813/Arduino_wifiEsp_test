@@ -1,3 +1,4 @@
+
 #include "WiFiEsp.h"
 #include "secrets.h"
 #include "ThingSpeak.h" // always include thingspeak header file after other header files and custom macros
@@ -92,9 +93,9 @@ void loop() {
   float H = ThingSpeak.readFloatField(myChannelNumber, 2, myReadAPIKey );
   String R = ThingSpeak.readStringField(myChannelNumber, 3, myReadAPIKey );
   
-  statusCode = ThingSpeak.getLastReadStatus();
+  int statusCode = ThingSpeak.getLastReadStatus();
   if(statusCode == 200){
-    Serial.print<< "[READ] T= " << T << " H= " << H << " R= " << R ;
+    Serial << "[READ] T= " << T << " H= " << H << " R= " << R ;
   }
   delay(20000); // Wait 20 seconds to update the channel again
   
